@@ -1,7 +1,7 @@
-# 100 Days of Code: The Complete Python Pro Bootcamp for 2023
+# 100 Days of Code: The Complete Python Pro Bootcamp
 
-Welcome to my 100 Days of Code journey with The Complete Python Pro Bootcamp for 2023! This repository documents my progress, projects, and learning experiences throughout the bootcamp.
-
+Welcome to my 100 Days of Code journey with The Complete Python Pro Bootcamp for 2024! This repository documents my progress, projects, and learning experiences throughout the bootcamp.
+While it may extend beyond the traditional 100 days, the goal is to code consistently day after day.
 ## About
 
 This repository contains:
