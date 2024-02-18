@@ -28,7 +28,7 @@ def main():
             highest_bid = bidders[key]
             winner = key
 
-    print(f"The winner was {winner}. {bidders[winner]}")
+    print(f"The winner was {winner}. {highest_bid}")
 
 if __name__== "__main__":
   main()
