@@ -58,19 +58,25 @@ def main():
   computer_cards = random.choices(cards_keys, k=2)
   player_cards_values = []
   computer_cards_values = [cards[key] for key in computer_cards]
+  computerBlackJack = False
   blackJack = False
   while True:
     player_cards_values = [cards[key] for key in player_cards]
     player_sum = sum_cards(player_cards_values)
-
+    computer_sum = sum_cards(computer_cards_values)
     print(
         f"\nYour cards: [ {' | '.join(player_cards)} ]. current score: {player_sum}"
     )
+    print(f"Computer's first card: {computer_cards[0]}")
     if player_sum == 0:
       player_sum = 21
       blackJack = True
       break
-    print(f"Computer's first card: {computer_cards[0]}")
+    elif computer_sum == 0:
+      computer_sum == 21
+      computerBlackJack = True
+      break
+
 
     if player_sum == 21:
       break
@@ -82,7 +88,7 @@ def main():
     else:
       player_cards.append(random.choice(cards_keys))
 
-  computer_sum = sum_cards(computer_cards_values)
+  
   while computer_sum < 17:
     choice = random.choice(cards_keys)
     computer_cards_values.append(cards[choice])
@@ -114,6 +120,8 @@ def main():
   print("********")
   if blackJack:
     print("You got a blackjack! You win!")
+  elif computerBlackJack:
+    print("The computer got a blackjack! You lose!")
   elif win:
     print("You win")
   elif tie:
