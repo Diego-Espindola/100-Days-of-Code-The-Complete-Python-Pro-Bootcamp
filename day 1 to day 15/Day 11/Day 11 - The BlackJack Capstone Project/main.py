@@ -80,7 +80,7 @@ def main():
     if input('Type "y" to get another card, type "n" to pass: ') == 'n':
       break
     else:
-      player_cards.append(random.choice(cards_keys))
+      player_cards += random.choice(cards_keys)
 
   computer_sum = sum_cards(computer_cards_values)
   while computer_sum < 17:
@@ -89,6 +89,12 @@ def main():
     computer_cards.append(choice)
     computer_sum = sum_cards(computer_cards_values)
 
+  print(
+      f"\nYour final hand: [ {' | '.join(player_cards)} ]. final score: {player_sum}"
+  )
+  print(
+      f"Computer's final hand: [ {' | '.join(computer_cards)} ]. final score: {computer_sum}"
+  )
   win = True
   tie = False
 
@@ -105,13 +111,6 @@ def main():
     tie = True
     win = False
 
-  print(
-      f"\nYour final hand:       [ {' | '.join(player_cards)} ]. final score: {player_sum}"
-  )
-  print(
-      f"Computer's final hand: [ {' | '.join(computer_cards)} ]. final score: {computer_sum}\n"
-  )
-  print("********")
   if blackJack:
     print("You got a blackjack! You win!")
   elif win:
@@ -120,10 +119,12 @@ def main():
     print("It's a tie")
   else:
     print("You lose")
-  print("********")
+
 
 if __name__ == "__main__":
   while input(
-      "\nDo you want to play a game of Blackjack? Type 'y' or 'n': ") == 'y':
+      "Do you want to play a game of Blackjack? Type 'y' or 'n': ") == 'y':
     clear()
     main()
+
+# TODO there are some things to correct, as when the dealer wins the half blackjack, and an error checking the aces
