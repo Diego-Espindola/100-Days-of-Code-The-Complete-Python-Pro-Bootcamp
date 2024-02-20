@@ -126,3 +126,5 @@ if __name__ == "__main__":
       "Do you want to play a game of Blackjack? Type 'y' or 'n': ") == 'y':
     clear()
     main()
+
+# TODO there are some things to correct, as when the dealer wins the half blackjack, and an error checking the aces
