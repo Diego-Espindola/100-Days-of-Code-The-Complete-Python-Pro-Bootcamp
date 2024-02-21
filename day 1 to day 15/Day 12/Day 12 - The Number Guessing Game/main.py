@@ -34,8 +34,10 @@ def check_attempt(number, guess):
     else:
         if guess > number:
             print("Too high")
+            print("Guess again")
         else:
             print("Too low")
+            print("Guess again")
         return False
 
 def main():
