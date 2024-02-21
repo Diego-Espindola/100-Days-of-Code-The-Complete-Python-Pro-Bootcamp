@@ -67,6 +67,8 @@
 #   new_number_of_enemies = enemies + 1
 #   return new_number_of_enemies 
 
+# # You won't normally use a global scope to change it inside a function.. For example, a variable that is the same value the entire code, make it global, then if sometime you want to change it.. you just need to change one line
+
 # # Or u can use the global
 
 # def increase_enemies():
