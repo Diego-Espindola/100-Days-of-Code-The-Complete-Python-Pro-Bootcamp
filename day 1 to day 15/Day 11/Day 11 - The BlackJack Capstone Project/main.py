@@ -58,8 +58,6 @@ def main():
   computer_cards = random.choices(cards_keys, k=2)
   player_cards_values = []
   computer_cards_values = [cards[key] for key in computer_cards]
-  computerBlackJack = False
-  blackJack = False
   while True:
     player_cards_values = [cards[key] for key in player_cards]
     player_sum = sum_cards(player_cards_values)
@@ -69,12 +67,10 @@ def main():
     )
     print(f"Computer's first card: {computer_cards[0]}")
     if player_sum == 0:
-      player_sum = 21
-      blackJack = True
+      #player_sum = 21
       break
     elif computer_sum == 0:
-      computer_sum == 21
-      computerBlackJack = True
+      #computer_sum == 21
       break
 
 
@@ -89,27 +85,35 @@ def main():
       player_cards.append(random.choice(cards_keys))
 
   
-  while computer_sum < 17:
+  while computer_sum < 17 and computer_sum > 0:
     choice = random.choice(cards_keys)
     computer_cards_values.append(cards[choice])
     computer_cards.append(choice)
     computer_sum = sum_cards(computer_cards_values)
 
-  win = True
-  tie = False
+  result = 4
+  possibilities = [
+    "You got a blackjack! You win!",
+    "The computer got a blackjack! You lose!",
+    "You win",
+    "It's a tie"
+    "You lose"
+  ]
 
-  if player_sum > 21:
-    win = False
-  elif player_sum == 21:
-    win = True
-  elif computer_sum > player_sum:
-    if computer_sum  > 21:
-      win = True
-    else:
-      win = False
-  elif computer_sum == player_sum:
-    tie = True
-    win = False
+  if computer_sum == player_sum:
+    result = possibilities[3]
+  elif computer_sum == 0:
+    result = possibilities[1]
+  elif player_sum == 0:
+    result = possibilities[0]
+  elif player_sum > 21:
+    result = possibilities[4]
+  elif player_sum > computer_sum:
+    result = possibilities[2]
+  else:
+    result = possibilities[4]
+
+
 
   print(
       f"\nYour final hand:       [ {' | '.join(player_cards)} ]. final score: {player_sum}"
@@ -118,16 +122,7 @@ def main():
       f"Computer's final hand: [ {' | '.join(computer_cards)} ]. final score: {computer_sum}\n"
   )
   print("********")
-  if blackJack:
-    print("You got a blackjack! You win!")
-  elif computerBlackJack:
-    print("The computer got a blackjack! You lose!")
-  elif win:
-    print("You win")
-  elif tie:
-    print("It's a tie")
-  else:
-    print("You lose")
+  print(possibilities[result])
   print("********")
 
 if __name__ == "__main__":
