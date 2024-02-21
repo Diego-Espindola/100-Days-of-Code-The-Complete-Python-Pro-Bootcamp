@@ -4,9 +4,26 @@ from art import logo
 def get_guess():
     while True:
         try:
-            return int(input("Make a guess: "))
+            guess = int(input("Make a guess: "))
+            if guess > 100 or guess < 0:
+                raise ValueError
+            return guess
         except ValueError:
-            print("Invalid input. Please enter a valid integer.")
+            print("**Invalid input. Please enter a valid integer between 1 and 100.")
+
+def get_difficulty():
+    while True:
+        try:
+            difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
+            if difficulty == "easy":
+                return 10
+            elif difficulty == "hard":
+                return 5
+            else:
+                raise ValueError("**Invalid difficulty level. Please enter 'easy' or 'hard'.")
+        except ValueError as e:
+            print(e)
+
 
 def check_attempt(number, guess):
     if guess == number:
@@ -24,8 +41,7 @@ def main():
     print("I'm thinking of a number between 1 and 100.")
     
     number = r.randint(0, 100)
-    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
-    attempts = 10 if difficulty == "easy" else 5
+    attempts = get_difficulty()
 
     while attempts > 0:
         print(f"You have {attempts} attempts remaining to guess the number.")
