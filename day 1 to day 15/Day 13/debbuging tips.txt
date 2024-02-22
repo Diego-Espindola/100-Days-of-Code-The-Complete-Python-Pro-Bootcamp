@@ -1,0 +1,38 @@
+- Take a break:
+
+It's really important when you're just staring at the code and you keep looking at
+
+it, it's not going to tell you the solution.
+
+Just have a cup of tea or have a nap,
+
+or just go to sleep and try to tackle it tomorrow.
+
+You will be surprised just how much easier things are when your brains had some
+
+downtime and then you come back to it. Everything seems so much more obvious.
+
+- Ask a friend:
+The really good thing about asking a friend to look through your code is
+
+they won't make the same assumptions that you've made.
+
+So they have some fresh eyes that they can look at the code with,
+
+and it might be incredibly obvious what's actually happening.
+
+And it's really not embarrassing at all.
+
+If somebody managed to help you with your code,
+
+you can offer to help them the next time when they get stuck. And for the person
+
+who's helping you,
+
+they're also just working out their programming muscles, right?
+
+- Run the code often:
+Don't wait until you've written loads and loads of code to hit run and then find out you've got loads of snags and loads of bugs.
+But run it after every little execution.
+Once you feel like you've changed the program ever so slightly, run it. Confirm that it's actually doing what you want it to do, because if you leave it all to the end, then you end up with a pile of bugs and you don't know where to start. 
+Now, if you do end up in that situation and you can see multiple bugs at the same time, try to tackle them one at a time instead of trying to do bits and bobs of each.
