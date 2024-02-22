@@ -21,7 +21,7 @@ def main():
     next_name = pick_next_name()
     print(f"Compare A: {actual_name['name']}, a {actual_name['description']}, from {actual_name['country']}")
     print(art.vs)
-    print(f"Compare B: {actual_name['name']}, a {actual_name['description']}, from {actual_name['country']}")
+    print(f"Compare B: {next_name['name']}, a {next_name['description']}, from {next_name['country']}")
 
     answer = input("Who has more followers? Type 'A' or 'B': ").upper()
     if actual_name['follower_count'] > next_name['follower_count']:
