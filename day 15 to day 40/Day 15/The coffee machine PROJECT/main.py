@@ -2,6 +2,7 @@ from informations import MENU, resources
 
 
 def try_again(input_phrase, list_of_possible_entries):
+    """Checks if the input is in the list of orders, returns False to turn off, and report if they input report"""
     word = input(input_phrase).lower()
     if word == "off":
         return False
@@ -16,6 +17,7 @@ def try_again(input_phrase, list_of_possible_entries):
 
 
 def check_entry_float(entry):
+    """Checks if the input is a float, and keeps trying while it isn't"""
     while True:
         try:
             word = float(input(entry))
@@ -25,6 +27,7 @@ def check_entry_float(entry):
 
 
 def print_resources():
+    """Print the resources and money"""
     print(f"""
     Water: {resources['water']}ml
     Milk: {resources['milk']}ml
@@ -34,6 +37,7 @@ def print_resources():
 
 
 def can_be_prepared(ingredients):
+    """Returns True if it has enough ingredients, else it returns the ingredients that are not enough"""
     ingredients_off = []
     for def_key in resources:
         if ingredients.get(def_key):
@@ -46,6 +50,7 @@ def can_be_prepared(ingredients):
 
 
 def make_a_coffee(def_chosen_coffee, def_order):
+    """Makes a coffee"""
     for key in resources:
         if def_chosen_coffee['ingredients'].get(key):
             resources[key] -= def_chosen_coffee['ingredients'][key]
