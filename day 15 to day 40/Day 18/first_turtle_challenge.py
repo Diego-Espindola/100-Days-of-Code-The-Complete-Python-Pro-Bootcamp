@@ -1,6 +1,6 @@
 # Draw a square
 import time
-from turtle import *
+from turtle import Turtle, Screen
 
 turtle = Turtle()
 turtle.shape("turtle")
