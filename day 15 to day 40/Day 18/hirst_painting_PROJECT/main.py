@@ -1,7 +1,7 @@
 # Create a spot paint
 # Requirements
 # You're going to paint a painting with 10 by 10 rows of spots
-# Each of the dots should be 20 in size and spaced apart by around 50 paces
+# Each of the dots should be 20 in size and spaced apart by around 10 paces
 from get_painting_colors import LIST_OF_COLORS
 from turtle import Turtle, Screen
 import random as r
@@ -18,12 +18,12 @@ for y in range(1, 11):
         turtle.pendown()
         turtle.color(color)
         turtle.dot(size=20)
-
+        # The size -20- plus 10 -the spacing between the dots- is 30
         turtle.penup()
-        turtle.forward(30)
+        turtle.forward(30) 
 
     x_position = first_position[0]
-    new_y_position = turtle.position()[1] + 30
+    new_y_position = turtle.position()[1] + 30 
     turtle.setposition(x_position, y=new_y_position)
 
 
