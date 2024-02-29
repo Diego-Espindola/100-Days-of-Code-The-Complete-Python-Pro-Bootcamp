@@ -37,7 +37,6 @@ def trace_heading():
 
 
 def main():
-    time.sleep(5)
     trace_heading()
 
     x = 0
