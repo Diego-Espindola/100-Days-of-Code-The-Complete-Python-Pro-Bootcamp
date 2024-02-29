@@ -36,9 +36,7 @@ def trace_heading():
     screen.onkeypress(t_backward, "Left")
 
 
-def main():
-    trace_heading()
-
+def initiate():
     x = 0
     turtles = [FIRST_TURTLE]
     for _ in range(2):
@@ -46,7 +44,12 @@ def main():
         turtle = FIRST_TURTLE.clone()
         turtle.goto(x, 0)
         turtles.append(turtle)
+    return turtles
 
+
+def main():
+    trace_heading()
+    turtles = initiate()
     screen.update()
 
     is_game_on = True
