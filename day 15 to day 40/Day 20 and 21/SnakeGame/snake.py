@@ -18,12 +18,16 @@ class Snake:
         x = MOVE_DISTANCE
         for _ in range(3):
             x -= MOVE_DISTANCE
-            new_segment = Turtle("square")
-            new_segment.color("white")
-            new_segment.shapesize(stretch_wid=1, stretch_len=1, outline=5)
-            new_segment.penup()
-            new_segment.goto(x, 0)
-            self.segments.append(new_segment)
+            self.add_segment(position=(x, 0))
+
+    def add_segment(self, position):
+        print(position)
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.shapesize(stretch_wid=1, stretch_len=1, outline=5)
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
 
     def t_up(self):
         if self.head.heading() != DOWN:
@@ -48,13 +52,6 @@ class Snake:
             other_turtle = self.segments[i]
             other_turtle.goto(self.segments[index - 1].position())
             other_turtle.setheading(self.segments[index - 1].heading())
-        #     if ate_fruit() and index == last_turtle_len:
-        #         new_turtle = SNAKE_HEAD.clone()
-        #         new_turtle.goto(segments[-1].position())
-        #         new_turtle.setheading(turtles[-1].heading())
-        # if ate_fruit():
-        #     turtles.append(new_turtle)
         self.head.forward(MOVE_DISTANCE)
-
-
-
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
