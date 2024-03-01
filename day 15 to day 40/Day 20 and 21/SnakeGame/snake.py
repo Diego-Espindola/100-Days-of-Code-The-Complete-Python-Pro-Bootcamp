@@ -21,7 +21,6 @@ class Snake:
             self.add_segment(position=(x, 0))
 
     def add_segment(self, position):
-        print(position)
         new_segment = Turtle("square")
         new_segment.color("white")
         new_segment.shapesize(stretch_wid=1, stretch_len=1, outline=5)
@@ -46,7 +45,6 @@ class Snake:
             self.head.setheading(LEFT)
 
     def move(self):
-        print(self.segments)
         for i in range(len(self.segments) - 1, 0, -1):
             index = i
             other_turtle = self.segments[i]
