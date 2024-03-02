@@ -15,6 +15,7 @@ class Player(Turtle):
         self.color("black")
         self.penup()
         self.goto(STARTING_POSITION)
+        self.setheading(0)
 
     def up_walk(self):
         if self.ycor() < 280:
