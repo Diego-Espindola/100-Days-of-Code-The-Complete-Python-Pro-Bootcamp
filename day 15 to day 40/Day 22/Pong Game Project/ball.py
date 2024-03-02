@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+BALL_SPEED = 0.07
+
 
 class Ball(Turtle):
     def __init__(self):
@@ -10,6 +12,7 @@ class Ball(Turtle):
         self.y_way = 10
         self.x_way = 10
         self.side = "right"
+        self.time_sleep = BALL_SPEED
 
     def update_side(self):
         if self.x_way > 0:
@@ -26,8 +29,10 @@ class Ball(Turtle):
 
     def touch_paddle(self):
         self.x_way *= -1
+        self.time_sleep *= 0.9
 
     def reset_ball(self):
+        self.time_sleep = BALL_SPEED
         self.setposition(0, 0)
         self.x_way *= -1
 

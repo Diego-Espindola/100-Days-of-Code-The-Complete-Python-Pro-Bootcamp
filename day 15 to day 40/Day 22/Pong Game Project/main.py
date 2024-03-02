@@ -29,7 +29,7 @@ ball = Ball()
 game_is_on = True
 while game_is_on:
     ball.start_moving()
-    time.sleep(0.03)
+    time.sleep(ball.time_sleep)
     # Detect collision with paddle
     if (ball.distance(r_paddle) < 80 or ball.distance(l_paddle) < 80) and ball.xcor() in [330, -330]:
         ball.touch_paddle()
