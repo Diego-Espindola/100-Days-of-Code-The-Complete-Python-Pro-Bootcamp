@@ -5,7 +5,7 @@ from scoreboard import ScoreBoard
 import time
 
 screen = Screen()
-screen.screensize(600, 600)
+screen.setup(width=600, height=600)
 screen.tracer(0)
 screen.bgcolor("Black")
 
