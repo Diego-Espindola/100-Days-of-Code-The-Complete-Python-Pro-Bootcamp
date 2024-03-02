@@ -4,6 +4,8 @@ UP = 90
 DOWN = 270
 WIDTH = 5
 HEIGHT = 1
+
+
 class Paddles(Turtle):
 
     def __init__(self, x_pos, y_pos):
