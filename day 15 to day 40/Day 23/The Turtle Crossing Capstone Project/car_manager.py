@@ -10,6 +10,13 @@ Y_RANGE = (-10, 13)
 
 
 class CarCreator(Turtle):
+    """
+    * CarCreator Class:
+      - Inherits from the Turtle class to create car objects.
+      - Sets the shape, color, and initial position of each car.
+      - Uses a random choice from predefined colors.
+      - Shapes are squares stretched to appear like cars.
+    """
     def __init__(self, position):
         super().__init__()
         self.shape("square")
@@ -21,6 +28,14 @@ class CarCreator(Turtle):
 
 
 class CarManager:
+    """
+    * CarManager Class:
+      - Manages the creation, movement, and collision detection of cars.
+      - Creates cars with random colors and positions within specified ranges.
+      - Manages the movement of cars, removing them from the screen when they reach a certain position.
+      - Checks for collisions with the player turtle and returns True if a collision occurs.
+      - Provides methods to increase the speed of cars, clear cars from the screen, and prepare for the next game round.
+    """
     def __init__(self):
         self.cars = []
         self.created_car = False

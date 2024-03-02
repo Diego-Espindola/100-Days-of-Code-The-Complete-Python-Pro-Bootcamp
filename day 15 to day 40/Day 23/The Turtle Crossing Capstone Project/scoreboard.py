@@ -5,6 +5,21 @@ CONGRATULATIONS_FONT = ("Arial", 20, "normal")
 
 
 class Scoreboard(Turtle):
+    """
+    Implements methods to update and display the current game level, end the game with a "Game Over" message,
+    and congratulate the player on reaching the next level.
+
+    * Update Score: The update_score method clears the scoreboard and writes the current level at the specified position
+
+    * End Game Message: The end_game method displays a "Game Over" message along with the level reached when
+    the game ends.
+
+    * Congratulations Message: The congratulations method clears the scoreboard and displays a
+    congratulations message when the player reaches the next level.
+
+    * Next Game Level: The next_game method increments
+    the level and displays a congratulations message for reaching the next level.
+    """
     def __init__(self):
         super().__init__()
         self.hideturtle()
