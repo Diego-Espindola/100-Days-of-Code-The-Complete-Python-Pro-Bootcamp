@@ -4,6 +4,9 @@ from food import Food
 from scoreboard import ScoreBoard
 import time
 
+with open("higher_score.txt", mode="r") as file:
+    initial_higher_score = int(file.read())
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
@@ -12,7 +15,7 @@ screen.bgcolor("Black")
 
 snake = Snake()
 food = Food()
-score_board = ScoreBoard()
+score_board = ScoreBoard(initial_higher_score)
 
 
 def trace_heading():

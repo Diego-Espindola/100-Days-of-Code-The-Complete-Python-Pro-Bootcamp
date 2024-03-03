@@ -5,10 +5,10 @@ FONT = ("Arial", 16, "normal")
 
 class ScoreBoard(Turtle):
 
-    def __init__(self):
+    def __init__(self, higher_score):
         super().__init__()
         self.score = 0
-        self.high_score = 0
+        self.high_score = higher_score
         self.color("white")
         self.shape('blank')
         self.penup()
@@ -17,6 +17,9 @@ class ScoreBoard(Turtle):
 
     def increment_score(self):
         self.score += 1
+        if self.score > self.high_score:
+            with open("higher_score.txt", mode="w") as file:
+                file.write(f"{self.score}")
         self.update_score()
 
     def update_score(self):
