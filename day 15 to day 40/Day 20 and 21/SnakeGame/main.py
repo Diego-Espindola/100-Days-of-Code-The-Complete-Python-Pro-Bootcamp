@@ -10,7 +10,6 @@ screen.tracer(0)
 screen.bgcolor("Black")
 
 
-GAME_ON = True
 snake = Snake()
 food = Food()
 score_board = ScoreBoard()
@@ -18,25 +17,26 @@ score_board = ScoreBoard()
 
 def trace_heading():
     screen.listen()
-    screen.onkey(snake.t_up, "Up")
-    screen.onkey(snake.t_down, "Down")
-    screen.onkey(snake.t_right, "Right")
-    screen.onkey(snake.t_left, "Left")
+    screen.onkeypress(snake.t_up, "Up")
+    screen.onkeypress(snake.t_down, "Down")
+    screen.onkeypress(snake.t_right, "Right")
+    screen.onkeypress(snake.t_left, "Left")
 
 
-def end_game():
-    global GAME_ON
-    GAME_ON = False
-    score_board.game_over()
+def reset_game():
+    score_board.reset()
+    snake.reset()
 
 
 def main():
-    global GAME_ON
+    game_on = True
     trace_heading()
-    while GAME_ON:
-        time.sleep(0.1)
+    while game_on:
+        start_time = time.time()
+        time.sleep(snake.delay)
         screen.update()
-        snake.move()
+        if snake.line_moving:
+            snake.move()
 
         # Detect collision with food
         if snake.head.distance(food) < 15:
@@ -46,12 +46,19 @@ def main():
 
         # Detect collision with wall
         if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-            end_game()
+            reset_game()
 
         # Detect collision with tail.
         for segment in snake.segments[1:]:
             if snake.head.distance(segment) < 10:
-                end_game()
+                reset_game()
+
+        # Calculates the time spent in the loop and updates the delay
+        end_time = time.time()  # End time of the loop
+        loop_time = end_time - start_time  # Time spent in the loop
+        snake.update_delay(loop_time)
+        snake.line_moving = True
+        snake.reset_delay_and_move_count()
 
 
 if __name__ == "__main__":

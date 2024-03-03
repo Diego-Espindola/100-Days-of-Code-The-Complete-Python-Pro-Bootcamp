@@ -10,13 +10,14 @@ class Food(Turtle):
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.color("blue")
         self.speed("fastest")
-        random_x = r.randint(-265 // 15, 265 // 15) * 15
-        random_y = r.randint(-265 // 15, 265 // 15) * 15
+
+    def refresh(self):
+        # Ensure that the food appears in the middle of the screen
+        random_x = r.randint(-12, 12) * 20 + 10  # Adjusted to match the snake's movement
+        random_y = r.randint(-12, 12) * 20 + 10 # Adjusted to match the snake's movement
         self.goto(random_x, random_y)
 
     def eat_fruit(self):
-        random_x = r.randint(-280, 280)
-        random_y = r.randint(-280, 280)
-        self.goto(random_x, random_y)
+        self.refresh()
 
 
