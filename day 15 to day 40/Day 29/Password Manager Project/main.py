@@ -1,8 +1,22 @@
 from tkinter import *
 from tkinter import messagebox
-from password_generator import create_password
-import pandas as pd
+from functions.password_generator import create_password
+from functions.json_get_info import find_most_used
+from functions.json_get_info import find_website
+import json
 import pyperclip
+
+
+# ---------------------------- FIND PASSWORD ------------------------------- #
+
+
+def search():
+    _website = website.get().capitalize()
+    json_data = find_website(_website)
+    if json_data:
+        messagebox.showinfo(title=_website, message=f"Email: {json_data['email']}\nPassword: {json_data['password']}")
+    else:
+        messagebox.showinfo(title=_website, message=f"Data not encountered")
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -19,7 +33,7 @@ def generate_password():
 
 
 def add_password():
-    _website_name = website.get()
+    _website_name = website.get().capitalize()
     _email_user = email.get()
     _password = password.get()
 
@@ -36,10 +50,23 @@ def add_password():
                                                                          f"\nEmail: {_email_user}\nPassword: {_password}"
                                                                          f"\nIs it ok to save?")
         if check_info:
+            new_data = {
+                _website_name: {
+                    "email": _email_user,
+                    "password": _password,
+                }
+            }
+            data = new_data
             website.delete(0, END)
             password.delete(0, END)
-            with open("passwords_file.csv", "a") as file:
-                file.write(f"{_website_name};{_email_user};{_password}\n")
+            try:
+                with open("passwords_json.json", "r") as file:
+                    data = json.load(file)
+                    data.update(new_data)
+            except json.JSONDecodeError:
+                pass
+            with open("passwords_json.json", "w") as file:
+                json.dump(data, file, indent=4)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -59,21 +86,16 @@ Label(text="Website:").grid(column=0, row=1)
 Label(text="Email/Username:").grid(column=0, row=2)
 Label(text="Password:").grid(column=0, row=3)
 
-website = Entry(width=40)
-website.grid(column=1, row=1, columnspan=2)
+website = Entry(width=21)
+website.grid(column=1, row=1, padx=(6, 115))
 website.focus()
+
+search_button = Button(text="Search", width=14, command=search)
+search_button.grid(column=1, row=1, padx=(140, 0))
 
 email = Entry(width=40)
 email.grid(column=1, row=2, columnspan=2)
-
-column_names = ['website', 'email/user', 'password']
-df = pd.read_csv('passwords_file.csv', names=column_names, sep=';')
-if not df.empty:
-    # Find the most common email/user to insert while opening
-    most_common_user = df['email/user'].value_counts().idxmax()
-else:
-    most_common_user = ""
-
+most_common_user = find_most_used()
 email.insert(0, most_common_user)
 
 password = Entry(width=21)
