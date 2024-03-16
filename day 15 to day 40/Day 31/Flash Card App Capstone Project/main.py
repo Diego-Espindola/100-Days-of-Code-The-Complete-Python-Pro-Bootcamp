@@ -18,7 +18,7 @@ if Path("./data/words_to_learn.csv").exists():
 else:
     df_words = pd.read_csv('./data/french_words.csv')
 WORDS = df_words.to_dict(orient="records")
-COLUMNS = df_words.COLUMNS.tolist()
+COLUMNS = df_words.columns.tolist()
 
 
 def next_card():
