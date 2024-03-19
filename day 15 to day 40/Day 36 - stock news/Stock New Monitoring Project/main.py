@@ -2,6 +2,7 @@ import requests
 from twilio.rest import Client
 from info import stock_api_key, news_api_key, phone_number, account_sid, auth_token, from_number
 
+# noinspection SpellCheckingInspection
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 PERCENTAGE_LIMIT = 2
@@ -11,7 +12,7 @@ def send_sms(body, to=phone_number):
     client = Client(account_sid, auth_token)
 
     try:
-        message = client.messages.create(
+        client.messages.create(
             from_=from_number,
             body=body,
             to=to
@@ -62,7 +63,8 @@ def main():
             for article in articles:
                 headline = article.get('title', 'No title available')
                 brief = article.get('description', 'No description available')
-                message = f"{STOCK}: {'🔺' if percentage_increase > 0 else '🔻'}{abs(percentage_increase)}%\nHeadline: {headline}\nBrief: {brief}"
+                message = (f"{STOCK}: {'🔺' if percentage_increase > 0 else '🔻'}{abs(percentage_increase)}%"
+                           f"\nHeadline: {headline}\nBrief: {brief}")
                 send_sms(message)
     except Exception as e:
         print(f"An error occurred: {e}")
