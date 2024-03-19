@@ -21,10 +21,10 @@ def main():
 	yesterday = dates[1]
 	the_day_before_yesterday = dates[2]
 
-	final_value = float(data[yesterday]['close'])
-	initial_value = float(data[the_day_before_yesterday]['open'])
+	final_value = float(data[yesterday]['4. close'])
+	initial_value = float(data[the_day_before_yesterday]['1. open'])
 	percentage_increase = ((final_value - initial_value) / initial_value) * 100
-
+	print(percentage_increase)
 	if percentage_increase > 5:
 		print('Get News')
 
