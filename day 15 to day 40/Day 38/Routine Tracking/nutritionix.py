@@ -10,6 +10,7 @@ HEIGHT_CM = os.getenv('HEIGHT_CM')
 AGE = os.getenv('AGE')
 APP_ID = os.getenv('APP_ID')
 API_KEY = os.getenv('API_KEY')
+URL = os.getenv('NUTRITIONIX_URL')
 
 
 class Nutritionix:
@@ -19,9 +20,6 @@ class Nutritionix:
 
     @staticmethod
     def request_exercise(query):
-        domain = "https://trackapi.nutritionix.com"
-        endpoint = "v2/natural/exercise"
-        url = f"{domain}/{endpoint}"
 
         request_headers = {
             "x-app-id": APP_ID,
@@ -37,7 +35,7 @@ class Nutritionix:
             "age": AGE
         }
 
-        response = requests.request("POST", url=url, headers=request_headers, json=request_parameters)
+        response = requests.post(url=URL, headers=request_headers, json=request_parameters)
         response.raise_for_status()
 
         return response.json()
