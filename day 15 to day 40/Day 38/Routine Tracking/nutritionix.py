@@ -39,4 +39,5 @@ class Nutritionix:
 
         response = requests.request("POST", url=url, headers=request_headers, json=request_parameters)
         response.raise_for_status()
+
         return response.json()
