@@ -1,5 +1,13 @@
 from twilio.rest import Client
-from info import phone_number, account_sid, auth_token, from_number
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+phone_number = os.getenv('phone_number')
+account_sid = os.getenv('account_sid')
+auth_token = os.getenv('auth_token')
+from_number = os.getenv('from_number')
 
 
 class NotificationManager:
